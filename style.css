@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    /*overflow: hidden; -Disables scroll when used with overflow: hidden;*/
+    font-family: 'Montserrat', monospace;
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    grid-template-rows: auto auto 58.3vw auto; /*Auto makes row size = size of container*/
+    grid-template-areas:
+        "options options"
+        "phrase phrase"
+        "gallows input"
+        "footer footer";
+}
+
+.container {
+    padding: 1.2em;
+    align-items: center;
+    text-align: center;
+}
+
+/** Top grid-area: Input phrase or start a new game */
+.options-container {
+    grid-area: options;
+    width: 100%;
+}
+
+.input {
+    font-family: 'Montserrat', monospace;
+    font-size: 1.1em;
+}
+
+.submit {
+    background-color: #FF6F61; /*Color Name: Living Coral*/
+    color: white;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 2em;
+    padding: 0.3em 1.2em;
+    cursor: pointer;
+}
+
+.submit:hover {
+    background: #FF7B77;
+}
+
+.phrase {
+    margin: 0;
+    font-family: 'Montserrat', monospace;
+    font-size: 1.1em;
+}
+
+.phrase-container {
+    background: lightblue;
+    grid-area: phrase;
+    width: 100%;
+}
+/** End of options-container */
+
+.gallows-container {
+    background: lightgreen;
+    grid-area: gallows;
+    width: 100%;
+}
+
+/** Container that contains the keyboard */
+.input-container {
+    background: grey;
+    grid-area: input;
+    width: 100%;
+    font-size: 2em;
+    height: 58.3vw;
+}
+
+.input {
+    font-family: 'Montserrat', monospace;
+    font-size: 1.1em;
+}
+
+.submit {
+    background-color: #FF6F61; /*Color Name: Living Coral*/
+    color: white;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 2em;
+    padding: 0.3em 1.2em;
+    cursor: pointer;
+}
+
+.submit:hover {
+    background: #FF7B77;
+}
+
+.phrase {
+    margin: 0;
+    font-family: 'Montserrat', monospace;
+    font-size: 1.1em;
+}
+
+.input-container .container {
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: inherit;
+    justify-items: center;
+    height: 100%;
+}
+
+.checkbox-container {
+    width: 100%;
+}
+
+.checkbox {
+    grid-area: inherit;
+    cursor: pointer;
+    border: none;
+    background-color: #77212E; /*Color Name: Biking Red*/
+    color: white;
+    border-radius: 1em;
+    font-size: 1.1em;
+    text-align: center;
+    padding: 0;
+    width: 80%;
+    margin: 0;
+}
+
+.checkbox:hover {
+    background-color: #9B1B30; /*Color Name: */
+}
+/** End of input-container*/
+
+.footer-container {
+    background: lightgrey;
+    grid-area: footer;
+    width: 100%;
+    font-size: 0.8em;
+}

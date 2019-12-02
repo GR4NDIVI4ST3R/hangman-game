@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hangman</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/Javascript" src="main.js"></script>
+</head>
+<body onload="onload()">
+
+    <div class="options-container" id="options">
+        <div class="container">
+            <input placeholder="Enter Word or Phrase" type="text" id="input" class="input" autocomplete="off">
+            <button type="submit" onclick="submit()" class="submit">submit</button>
+        </div>
+    </div>
+
+    <div class="phrase-container">
+        <div class="container">
+            <pre id="phrase" class="phrase">DON'T LET THE GUESSER SEE IT!</pre>
+        </div>
+    </div>
+
+    <div class="gallows-container">
+        <div class="container">
+            <p><b>Gallows</b></p>
+        </div>
+    </div>
+
+    <div class="input-container">
+        <div class="container" id="keyboard">
+            <!--Javascript is used to paste all of the letter keys here-->
+        </div>
+    </div>
+
+    <div class="footer-container">
+        <div class="container">
+            <p>Brought to you by: Xavior P</p>
+        </div>
+    </div>
+
+</body>
+</html>

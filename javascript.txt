@@ -1,0 +1,2 @@
+string.length
+charAt() /*Starts at character 0 in string*/
