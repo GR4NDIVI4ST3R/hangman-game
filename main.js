@@ -63,8 +63,13 @@ function submit() {
 }
 
 function guess(id) {
+    input = input.toUpperCase();
+    if (input.includes(id)) {
+        alert("Yay!");
+    }
     alert(id);
     alert(input);
+    document.getElementById(id).disabled = true;
 }
 
 /* Call listed functions after html loads */
