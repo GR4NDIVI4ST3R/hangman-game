@@ -42,6 +42,16 @@ body {
     cursor: pointer;
 }
 
+.reset {
+    background-color: #FF6F61; /*Color Name: Living Coral*/
+    color: white;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 2em;
+    padding: 0.3em 1.2em;
+    cursor: pointer;
+}
+
 .submit:hover {
     background: #FF7B77;
 }
@@ -120,6 +130,7 @@ body {
     border: none;
     background-color: #77212E; /*Color Name: Biking Red*/
     color: white;
+    outline: none;
     border-radius: 1em;
     font-size: 1.1em;
     text-align: center;
