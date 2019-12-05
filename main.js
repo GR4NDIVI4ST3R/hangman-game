@@ -1,4 +1,5 @@
-var phrase = "DON'T LET THE GUESSER SEE IT!";
+var resetPhrase = "DON'T LET THE GUESSER SEE IT!";
+var phrase = resetPhrase;
 var input = "__invalid__";
 
 /* Paste in full A-Z keyboard using ASCII Codes, instead of manual HTML */
@@ -16,7 +17,6 @@ function submit() {
     phrase = "";
     input = document.getElementById("input").value;
     if (input.trim().length === 0) {
-        alert("huh");
         alert("Invalid Phrase; Please use the following: [ a-z ], [ A-Z ], [ – ], [ . ], [ \' ], [ ? ] or [ ! ]");
         phrase = "DON'T LET THE GUESSER SEE IT!";
         input = "__invalid__";
@@ -60,11 +60,6 @@ function submit() {
     document.getElementById("input").value = "";
 }
 
-function reset() {
-    for (var i = 65; i <= 90; i++) {
-        document.getElementById(String.fromCharCode(i)).disabled = false;
-    }
-}
 
 function guess(id) {
     if (input === "__invalid__") {
@@ -79,6 +74,16 @@ function guess(id) {
         alert(input);
         document.getElementById(id).disabled = true;
     }
+}
+
+function reset() {
+    for (var i = 65; i <= 90; i++) {
+        document.getElementById(String.fromCharCode(i)).disabled = false;
+    }
+    document.getElementById("input").value = "";
+    document.getElementById("phrase").innerHTML = resetPhrase;
+    phrase = "";
+    input = "__invalid__";
 }
 
 /* Call listed functions after html loads */
