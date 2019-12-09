@@ -99,7 +99,12 @@ function guess(id) {
         if (solution.includes(id)) {
             // Show guess in phrase box
                 // Find every location of id in input and translate to location of id in phrase
-            for (var i=0; i == 10; i++) {
+            var pos = [0];
+
+            for (var i = 0; i <= pos.length; i++) {
+                if (pos[i] > -1) {
+                    pos[i] = input.indexOf(id, pos[i] + 1);
+                }
                 /* Translate between input.length and var i
                 using a scale based on the underscores being four positions long */
                 // Account for apostrophe and other punctuation
@@ -139,9 +144,16 @@ function guess(id) {
         }
 
         //* Debugging
+        /*
+        var posArray = "";
+        for (var i = 0; i < pos.length; i++) {
+            posArray += pos[i].toString() + " "; 
+        }
+        */
         debug = "Solution: " + solution + "\n" /*New Line*/ +
                 "Answer: " + input + "\n" + 
-                "Body Parts: " + bodyParts;
+                "Body Parts: " + bodyParts + "\n" +
+                "Positions: " + pos[0] + pos[1] + pos[2];
         alert(debug); //Toggle using strikethrough
     }
 }
