@@ -3,6 +3,7 @@ var phrase = resetMessage;
 var input = "__INVALID__"; // Used for when nothing is inside input box
 var solution = "__INVALID__"; // Default when nothing is inside input box
 var bodyParts = 0;
+var phraseList = [];
 var posList = [];
 var resetMessage = "DON'T LET THE GUESSER SEE IT!";
 var winMessage = "You Won!";
@@ -47,41 +48,40 @@ function submit() {
         //* Turn input into underscores
         //! Turn underscores and punctuation into elements within an array
         //! Then use: document.getElementById("phrase").innerHTML = phrase.join(" ");
-        for (var i = 0; i < input.length; i+= 1) {
+        while (phraseList.length <= input.length) {
             if (input.charAt(i).match(/^[a-zA-Z]+$/)) { // The /^[]+$/ is Javascript Regex
-                phrase += "___ ";
+                phraseList.push(charAt(i));
             }
             // If [else if] isn't used, the last [else] will only apply to the [if] above it
             else if (input.charAt(i) == " ") {
-                phrase += "     ";
+                phraseList.push("     ");
             }
             else if (input.charAt(i) == "'") {
-                phrase += "' ";
+                phraseList.push("' ");
             }
             else if (input.charAt(i) == "-") {
-                phrase += "— ";
+                phraseList.push("— ");
             }
             else if (input.charAt(i) == ".") {
-                phrase += ". ";
+                phraseList.push(". ");
             }
             else if (input.charAt(i) == ",") {
-                phrase += ", ";
+                phraseList.push(", ");
             }
             else if (input.charAt(i) == "?") {
-                phrase += "? ";
+                phraseList.push("? ");
             }
             else if (input.charAt(i) == "!") {
-                phrase += "! ";
+                phraseList.push("! ");
             }
-            // If input contains any characters not listed above, do the following:
             else {
                 alert("Invalid Phrase; Please use the following: a-z, A-Z, \" ? \", \" ! \", \" \' \" or \" . \"");
-                phrase = "DON'T LET THE GUESSER SEE IT!";
-                input = "__INVALID__";
+                reset();
                 break;
             }
         }
-        document.getElementById("phrase").innerHTML = phrase;
+
+        document.getElementById("phrase").innerHTML = phrase.join(" ");
         document.getElementById("input").value = "";
         document.getElementById("input").classList.toggle("hide");
         document.getElementById("submit").classList.toggle("hide");
