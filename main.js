@@ -1,8 +1,9 @@
 //* Global Variables
 var phrase = resetMessage;
 var input = "__INVALID__"; // Used for when nothing is inside input box
-var solution = ""; // Default when nothing is inside input box
+var solution = "__INVALID__"; // Default when nothing is inside input box
 var bodyParts = 0;
+var posList = [];
 var resetMessage = "DON'T LET THE GUESSER SEE IT!";
 var winMessage = "You Won!";
 var loseMessage = "You Lose! lmao!";
@@ -12,11 +13,11 @@ var debug = "";
 //TODO: make underscores turn into letters when guess is correct
 //TODO: make git thing with batch
 
-// Paste in full A-Z keyboard using ASCII Codes, instead of manual HTML
+//* Paste in full A-Z keyboard using ASCII Codes, instead of manual HTML
 // Also much easier to make edits to keyboard buttons
 function keyboard() {
     var layout = "";
-    var box = "<div class=\"checkbox-container\"><button class=\"checkbox\" id=\""; // Easy to edit Ex: adding onclick(), changing class names, etc
+    var box = "<div class=\"checkbox-container\"><button class=\"checkbox\" id=\""; // Easy to edit (Ex: adding onclick(), changing class names, etc)
     for (var i = 65; i <= 90; i++) {
         layout += box + String.fromCharCode(i) + "\" onclick=\"guess(this.id)\"> " + String.fromCharCode(i) + "</button></div>";
     }
@@ -85,7 +86,6 @@ function submit() {
     }
 }
 
-
 function guess(id) {
     if (solution === "__INVALID__") {
         alert("Da hell u doin'");
@@ -97,26 +97,26 @@ function guess(id) {
 
         //* Correct Guess
         if (solution.includes(id)) {
-            // Show guess in phrase box
-                // Find every location of id in input and translate to location of id in phrase
-            var pos = [0];
-
-            for (var i = 0; i <= pos.length; i++) {
-                if (pos[i] > -1) {
-                    pos[i] = input.indexOf(id, pos[i] + 1);
+            //* Create array of the locations of "id" within "input"
+            // lastPos = the first pos of "id"
+            var lastPos = input.indexOf(id);
+            // Find nextPos by searching for the first occurance of "id" AFTER the previous first occurance
+            var nextPos = input.indexOf(id, lastPos + 1);
+            // Make lastPos the first element in "posList"
+            posList = [lastPos];
+            while (lastPos !== -1) { // While lastPos is a valid position
+                lastPos = posList[posList.push(nextPos) - 1];
+                // "posList.push(nextPos)" appends the next pos of "id" to posList AND returns its new length
+                nextPos = input.indexOf(id, lastPos + 1);
+                // If -1 was returned by indexOf(), it means that it could't find "id" again
+                if (lastPos == -1) {
+                    posList.pop();
                 }
-                /* Translate between input.length and var i
-                using a scale based on the underscores being four positions long */
-                // Account for apostrophe and other punctuation
-                // Maybe use a dictionary:
-                    // Store the id's as variables and their positions as definitions
-
             }
 
-            ////phrase = phrase.replace("___ ___ ", " V   A   S   E       ___ ___ ")
-            document.getElementById("phrase").innerHTML = phrase;
+            //! Make a function to replce underscores in "phrase" w/ letters using "posList"
 
-            // Remove every instance of the guess from solution
+            //* Remove every instance of "id" from "solution"
             while (solution.includes(id)) {
                 solution = solution.replace(id,"");
             }
@@ -126,6 +126,7 @@ function guess(id) {
         //* Incorrect guess
         else if (bodyParts < 9) {
             bodyParts++;
+            //! If problems arise, try reseting "posList" here
         }
 
         //* Win condition
@@ -142,20 +143,13 @@ function guess(id) {
             reset();
             return "lost"; //Exits reset function; "lost" is for possible later use
         }
-
-        //* Debugging
-        /*
-        var posArray = "";
-        for (var i = 0; i < pos.length; i++) {
-            posArray += pos[i].toString() + " "; 
-        }
-        */
-        debug = "Solution: " + solution + "\n" /*New Line*/ +
-                "Answer: " + input + "\n" + 
-                "Body Parts: " + bodyParts + "\n" +
-                "Positions: " + pos[0] + pos[1] + pos[2];
-        alert(debug); //Toggle using strikethrough
     }
+    //* Debugging
+    debug = "Solution: " + solution + "\n" /*New Line*/ +
+            "Answer: " + input + "\n" + 
+            "Body Parts: " + bodyParts + "\n" +
+            "Positions: " + posList.join(", "); //Turns array into string and allows custom separator
+    alert(debug); //Toggle using strikethrough
 }
 
 function reset() {
@@ -171,11 +165,12 @@ function reset() {
 
     document.getElementById("input").value = "";
     input = "__INVALID__";
+    solution = "__INVALID__";
 
     document.getElementById("phrase").innerHTML = resetMessage;
     phrase = "";
 
-    solution = "__INVALID__";
+    posList = [];
     bodyParts = 0;
 }
 
