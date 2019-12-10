@@ -44,7 +44,9 @@ function submit() {
         solution = solution.replace("?", "");
         solution = solution.replace("!", "");
         
-        //* Make input phrase hidden with underscores
+        //* Turn input into underscores
+        //! Turn underscores and punctuation into elements within an array
+        //! Then use: document.getElementById("phrase").innerHTML = phrase.join(" ");
         for (var i = 0; i < input.length; i+= 1) {
             if (input.charAt(i).match(/^[a-zA-Z]+$/)) { // The /^[]+$/ is Javascript Regex
                 phrase += "___ ";
