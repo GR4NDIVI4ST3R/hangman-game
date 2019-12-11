@@ -131,22 +131,27 @@ function guess(id) {
                 }
             }
 
-            //! Make a function to replce underscores in "phrase" w/ letters using "posList"
+            //* Replce underscores in "phrase" w/ letters from "posList"
+            for (var i = 0; i < posList.length; i++) {
+                phraseList[posList[i]] = " " + id + " ";
+                document.getElementById("phrase").innerHTML = phraseList.join(" ");
+            }
+            
 
             //* Remove every instance of "id" from "solution"
             while (solution.includes(id)) {
                 solution = solution.replace(id,"");
             }
-
         }
         //* Incorrect guess
         else if (bodyParts < 9) {
             bodyParts++;
-            //! If problems arise, try reseting "posList" here
+            posList = [];
         }
 
         //* Win condition
         if (solution.trim().length === 0) {
+            //! Make nicer looking winMessage pop up box
             alert(winMessage);
             reset();
             return "won"; //Exits reset function; "won" is for possible later use
@@ -154,6 +159,7 @@ function guess(id) {
         
         //* Lose condition
         if (bodyParts >= 9) {
+            //! Make nicer looking loseMessage pop up box
             alert(loseMessage);
             alert("Answer: " + input);
             reset();
