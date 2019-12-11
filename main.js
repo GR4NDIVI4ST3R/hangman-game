@@ -152,18 +152,21 @@ function guess(id) {
         //* Win condition
         if (solution.trim().length === 0) {
             //! Make nicer looking winMessage pop up box
-            alert(winMessage);
+            document.getElementById("win-lose-message").innerHTML = winMessage;
+            document.getElementById("win-lose-message").classList.remove("hide");
             reset();
-            return "won"; //Exits reset function; "won" is for possible later use
+            return "won"; // "return" exits the guess() function like "break;" exits a loop
+            // "won" is for possible later use
         }
-        
+
         //* Lose condition
         if (bodyParts >= 9) {
             //! Make nicer looking loseMessage pop up box
-            alert(loseMessage);
-            alert("Answer: " + input);
-            reset();
-            return "lost"; //Exits reset function; "lost" is for possible later use
+            document.getElementById("win-lose-message").innerHTML = loseMessage + "\n" + "Answer: " + input;
+            document.getElementById("win-lose-message").classList.remove("hide");
+            //alert("Answer: " + input);
+            return "lost"; // "return" exits the guess() function like "break;" exits a loop
+            // "lost" is for possible later use
         }
     }
     //* Debugging
@@ -172,7 +175,7 @@ function guess(id) {
             "Body Parts: " + bodyParts + "\n" +
             "Phrase: " + phraseList.toString() + "\n" +
             "Positions: " + posList.join(", "); //Turns array into string and allows custom separator
-    alert(debug); //Toggle using strikethrough
+    ////alert(debug); //Toggle using strikethrough
 }
 
 function reset() {
@@ -192,6 +195,8 @@ function reset() {
 
     document.getElementById("phrase").innerHTML = resetMessage;
     phrase = "";
+
+    document.getElementById("win-lose-message").innerHTML = "";
 
     posList = [];
     phraseList = [];
