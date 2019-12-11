@@ -25,12 +25,28 @@ function keyboard() {
     document.getElementById("keyboard").innerHTML = layout;
 }
 
+function isInvalid(input) {
+    input = input.replace("'", ""); // "replace()" does not change the string it is called on. It returns a new string.
+    input = input.replace("-", "");
+    input = input.replace("–", "");
+    input = input.replace(".", "");
+    input = input.replace(",", "");
+    input = input.replace("?", "");
+    input = input.replace("!", "");
+    if (input.trim().length === 0) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 function submit() {
     phrase = "";
     input = document.getElementById("input").value;
     input = input.toUpperCase();
     // Check if input box is empty
-    if (input.trim().length === 0) {
+    if (isInvalid(input)) {
         alert("Invalid Phrase; Please use the following: [ a-z ], [ A-Z ], [ – ], [ . ], [ \' ], [ ? ] or [ ! ]");
         reset();
     }
@@ -46,33 +62,32 @@ function submit() {
         solution = solution.replace("!", "");
         
         //* Turn input into underscores
-        //! Turn underscores and punctuation into elements within an array
-        //! Then use: document.getElementById("phrase").innerHTML = phrase.join(" ");
-        while (phraseList.length <= input.length) {
+        //! Turn this into a function for readability
+        for (var i = 0; i < input.length; i++) {
             if (input.charAt(i).match(/^[a-zA-Z]+$/)) { // The /^[]+$/ is Javascript Regex
-                phraseList.push(charAt(i));
+                phraseList.push("___");
             }
             // If [else if] isn't used, the last [else] will only apply to the [if] above it
             else if (input.charAt(i) == " ") {
-                phraseList.push("     ");
+                phraseList.push("    ");
             }
             else if (input.charAt(i) == "'") {
-                phraseList.push("' ");
+                phraseList.push("'");
             }
             else if (input.charAt(i) == "-") {
-                phraseList.push("— ");
+                phraseList.push("—");
             }
             else if (input.charAt(i) == ".") {
-                phraseList.push(". ");
+                phraseList.push(".");
             }
             else if (input.charAt(i) == ",") {
-                phraseList.push(", ");
+                phraseList.push(",");
             }
             else if (input.charAt(i) == "?") {
-                phraseList.push("? ");
+                phraseList.push("?");
             }
             else if (input.charAt(i) == "!") {
-                phraseList.push("! ");
+                phraseList.push("!");
             }
             else {
                 alert("Invalid Phrase; Please use the following: a-z, A-Z, \" ? \", \" ! \", \" \' \" or \" . \"");
@@ -81,7 +96,7 @@ function submit() {
             }
         }
 
-        document.getElementById("phrase").innerHTML = phrase.join(" ");
+        document.getElementById("phrase").innerHTML = phraseList.join(" ");
         document.getElementById("input").value = "";
         document.getElementById("input").classList.toggle("hide");
         document.getElementById("submit").classList.toggle("hide");
@@ -123,7 +138,6 @@ function guess(id) {
                 solution = solution.replace(id,"");
             }
 
-            document.getElementById("phrase").innerHTML = phrase;
         }
         //* Incorrect guess
         else if (bodyParts < 9) {
@@ -150,6 +164,7 @@ function guess(id) {
     debug = "Solution: " + solution + "\n" /*New Line*/ +
             "Answer: " + input + "\n" + 
             "Body Parts: " + bodyParts + "\n" +
+            "Phrase: " + phraseList.toString() + "\n" +
             "Positions: " + posList.join(", "); //Turns array into string and allows custom separator
     alert(debug); //Toggle using strikethrough
 }
@@ -173,6 +188,7 @@ function reset() {
     phrase = "";
 
     posList = [];
+    phraseList = [];
     bodyParts = 0;
 }
 
