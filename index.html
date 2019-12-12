@@ -10,9 +10,10 @@
 </head>
 <body onload="onload()">
 
-    <div class="options-container" id="options">
-        <div class="container">
-            <button type="button" onclick="reset()" class="new-game-btn">new game</button>
+    <div class="options-container">
+        <div class="container" id="options">
+            <pre id="winLoseMessage" class="win-lose-message hide"></pre>
+            <button type="button" onclick="reset()" class="new-game-btn" id="newGameBtn">new game</button>
             <input placeholder="Enter Word or Phrase" type="text" id="input" class="input" autocomplete="off">
             <button type="button" onclick="submit()" class="submit" id="submit">submit</button>
         </div>
@@ -26,8 +27,8 @@
 
     <div class="gallows-container">
         <div class="container">
-            <h1 id="win-lose-message" class="win-message hide"></h1>
-            <button type="button" onclick="reset()" id="reset-btn" class="new-game-btn hide">new game</button>
+            <span id="placeholder"></span>
+            <button type="button" onclick="reset()" id="newGameBtn2" class="new-game-btn hide">New Game?</button>
         </div>
     </div>
 

@@ -35,6 +35,12 @@ body {
     width: 100%;
 }
 
+.win-lose-message {
+    margin: 0;
+    font-family: 'Montserrat', monospace;
+    font-size: 1.1em;
+}
+
 .input {
     font-family: 'Montserrat', monospace;
     font-size: 1.1em;

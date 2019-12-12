@@ -7,7 +7,9 @@ var phraseList = [];
 var posList = [];
 var resetMessage = "DON'T LET THE GUESSER SEE IT!";
 var winMessage = "You Won!";
-var loseMessage = "You Lose! lmao!";
+var loseMessage = "XAXA!" + "\n" + 
+                  "In Mother Russia, you don't play Hangman." + "\n" + 
+                  "Hangman plays you!";
 var debug = "";
 
 //TODO: make gallows
@@ -146,17 +148,18 @@ function guess(id) {
         //* Incorrect guess
         else if (bodyParts < 9) {
             bodyParts++;
+            document.getElementById("placeholder").innerHTML = bodyParts;
+            document.getElementById("winLoseMessage").classList.remove("hide");
             posList = [];
         }
 
         //* Win condition
         if (solution.trim().length === 0) {
             //! Make nicer looking winMessage pop up box
-            document.getElementById("win-lose-message").innerHTML = winMessage;
-            document.getElementById("win-lose-message").classList.remove("hide");
-            document.getElementById("reset-btn").classList.remove("hide");
-            
-            document.getElementById("reset-btn").classList.remove("hide");
+            document.getElementById("winLoseMessage").innerHTML = winMessage;
+            document.getElementById("winLoseMessage").classList.remove("hide");
+            document.getElementById("newGameBtn").classList.add("hide");
+            document.getElementById("newGameBtn2").classList.remove("hide");
             
             return "won"; // "return" exits the guess() function like "break;" exits a loop
             // "won" is for possible later use
@@ -164,15 +167,18 @@ function guess(id) {
 
         //* Lose condition
         if (bodyParts >= 9) {
-            document.getElementById("win-lose-message").innerHTML = loseMessage + "\n" + "Answer: " + input;
-            document.getElementById("win-lose-message").classList.remove("hide");
+            document.getElementById("winLoseMessage").innerHTML = loseMessage;
+            document.getElementById("phrase").innerHTML = input;
+            document.getElementById("winLoseMessage").classList.remove("hide");
             
-            document.getElementById("reset-btn").classList.remove("hide");
+            document.getElementById("newGameBtn").classList.add("hide");
+            document.getElementById("newGameBtn2").classList.remove("hide");
 
             return "lost"; // "return" exits the guess() function like "break;" exits a loop
             // "lost" is for possible later use
         }
     }
+
     //* Debugging
     debug = "Solution: " + solution + "\n" /*New Line*/ +
             "Answer: " + input + "\n" + 
@@ -192,7 +198,9 @@ function reset() {
     //* Show and reset input box, submit btn, and phrase
     document.getElementById("input").classList.remove("hide");
     document.getElementById("submit").classList.remove("hide");
-    document.getElementById("reset-btn").classList.add("hide");
+
+    document.getElementById("newGameBtn").classList.remove("hide");
+    document.getElementById("newGameBtn2").classList.add("hide");
 
     document.getElementById("input").value = "";
     input = "__INVALID__";
@@ -201,7 +209,10 @@ function reset() {
     document.getElementById("phrase").innerHTML = resetMessage;
     phrase = "";
 
-    document.getElementById("win-lose-message").innerHTML = "";
+    document.getElementById("winLoseMessage").innerHTML = "";
+
+    document.getElementById("placeholder").innerHTML = "";
+
 
     posList = [];
     phraseList = [];
