@@ -154,17 +154,21 @@ function guess(id) {
             //! Make nicer looking winMessage pop up box
             document.getElementById("win-lose-message").innerHTML = winMessage;
             document.getElementById("win-lose-message").classList.remove("hide");
-            reset();
+            document.getElementById("reset-btn").classList.remove("hide");
+            
+            document.getElementById("reset-btn").classList.remove("hide");
+            
             return "won"; // "return" exits the guess() function like "break;" exits a loop
             // "won" is for possible later use
         }
 
         //* Lose condition
         if (bodyParts >= 9) {
-            //! Make nicer looking loseMessage pop up box
             document.getElementById("win-lose-message").innerHTML = loseMessage + "\n" + "Answer: " + input;
             document.getElementById("win-lose-message").classList.remove("hide");
-            //alert("Answer: " + input);
+            
+            document.getElementById("reset-btn").classList.remove("hide");
+
             return "lost"; // "return" exits the guess() function like "break;" exits a loop
             // "lost" is for possible later use
         }
@@ -188,6 +192,7 @@ function reset() {
     //* Show and reset input box, submit btn, and phrase
     document.getElementById("input").classList.remove("hide");
     document.getElementById("submit").classList.remove("hide");
+    document.getElementById("reset-btn").classList.add("hide");
 
     document.getElementById("input").value = "";
     input = "__INVALID__";
