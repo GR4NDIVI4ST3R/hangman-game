@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
+/* https://digitalsynopsis.com/design/minimal-web-color-palettes-combination-hex-code/ */
+
 .hide {
     display: none;
 }
@@ -11,6 +13,7 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: white;
     /*overflow: hidden; -Disables scroll when used with overflow: hidden;*/
     font-family: 'Montserrat', monospace;
     display: grid;
@@ -29,7 +32,7 @@ body {
     text-align: center;
 }
 
-/** Top grid-area: Input phrase or start a new game */
+/** Options Container */
 .options-container {
     grid-area: options;
     width: 100%;
@@ -47,8 +50,8 @@ body {
 }
 
 .submit {
-    background-color: #FF6F61; /*Color Name: Living Coral*/
-    color: white;
+    background-color: #9DE0AD; /*Color Name: Living Coral*/
+    color: #FFF;
     font-size: 1.1em;
     border: none;
     border-radius: 2em;
@@ -56,20 +59,22 @@ body {
     cursor: pointer;
 }
 
-.new-game-btn {
-    background-color: #FF6F61; /*Color Name: Living Coral*/
-    color: white;
-    font-size: 1.1em;
-    border: none;
-    border-radius: 2em;
-    padding: 0.3em 1.2em;
-    cursor: pointer;
-}
-
-.submit:hover {
+button:hover {
     background: #FF7B77;
 }
 
+.new-game-btn {
+    background-color: #9DE0AD;
+    color: #FFF;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 2em;
+    padding: 0.3em 1.2em;
+    cursor: pointer;
+}
+/** End of options-container */
+
+/** Phrase-container */
 .phrase {
     margin: 0;
     font-family: 'Montserrat', monospace;
@@ -77,53 +82,29 @@ body {
 }
 
 .phrase-container {
-    background: lightblue;
+    background: #9DE0AD;
+    color: #555;
     grid-area: phrase;
     width: 100%;
 }
-/** End of options-container */
+/** End of Phrase-container */
 
 .gallows-container {
-    background: lightgreen;
+    background: #FFF;
     grid-area: gallows;
     width: 100%;
 }
 
 /** Container that contains the keyboard */
-.input-container {
-    background: grey;
+.keyboard-container {
+    background: #FFF;
     grid-area: input;
     width: 100%;
     font-size: 2em;
     height: 58.3vw;
 }
 
-.input {
-    font-family: 'Montserrat', monospace;
-    font-size: 1.1em;
-}
-
-.submit {
-    background-color: #FF6F61; /*Color Name: Living Coral*/
-    color: white;
-    font-size: 1.1em;
-    border: none;
-    border-radius: 2em;
-    padding: 0.3em 1.2em;
-    cursor: pointer;
-}
-
-.submit:hover {
-    background: #FF7B77;
-}
-
-.phrase {
-    margin: 0;
-    font-family: 'Montserrat', monospace;
-    font-size: 1.1em;
-}
-
-.input-container .container {
+.keyboard-container .container {
     padding: 0;
     margin: 0;
     display: grid;
@@ -142,8 +123,8 @@ body {
     grid-area: inherit;
     cursor: pointer;
     border: none;
-    background-color: #77212E; /*Color Name: Biking Red*/
-    color: white;
+    background-color: #45ADA8; /*Color Name: Biking Red*/
+    color: #FFF;
     outline: none;
     border-radius: 1em;
     font-size: 1.1em;
@@ -152,14 +133,14 @@ body {
     width: 80%;
     margin: 0;
 }
+/** End of keyboard-container*/
 
-.checkbox:hover {
-    background-color: #9B1B30; /*Color Name: */
+.footer {
+    background: #9DE0AD;
 }
-/** End of input-container*/
 
 .footer-container {
-    background: lightgrey;
+    background: #9DE0AD;
     grid-area: footer;
     width: 100%;
     font-size: 0.8em;
