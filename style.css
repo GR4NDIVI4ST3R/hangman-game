@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
-/* https://digitalsynopsis.com/design/minimal-web-color-palettes-combination-hex-code/ */
-
 .hide {
     display: none;
 }
@@ -10,10 +8,21 @@
     display: none;
 }
 
+button {
+    background-color: #FFF; /*557A95*/
+    color: #557A95;
+    font-size: 1em;
+}
+
+button:hover {
+    background: #918E97;
+    color: #FFF;
+}
+
 body {
     margin: 0;
     padding: 0;
-    background-color: white;
+    background-color: #7395AE;
     /*overflow: hidden; -Disables scroll when used with overflow: hidden;*/
     font-family: 'Montserrat', monospace;
     display: grid;
@@ -27,6 +36,7 @@ body {
 }
 
 .container {
+    color: #FFF;
     padding: 1.2em;
     align-items: center;
     text-align: center;
@@ -49,53 +59,58 @@ body {
     font-size: 1.1em;
 }
 
-.submit {
-    background-color: #9DE0AD; /*Color Name: Living Coral*/
-    color: #FFF;
-    font-size: 1.1em;
-    border: none;
-    border-radius: 2em;
-    padding: 0.3em 1.2em;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #FF7B77;
-}
-
 .new-game-btn {
-    background-color: #9DE0AD;
-    color: #FFF;
-    font-size: 1.1em;
     border: none;
-    border-radius: 2em;
+    border-radius: 0.5em;
     padding: 0.3em 1.2em;
     cursor: pointer;
+
+    background-color: #7395AE; /*557A95*/
+    color: #FFF;
+}
+
+.submit {
+    border: none;
+    border-radius: 0.5em;
+    padding: 0.3em 1.2em;
+    cursor: pointer;
+
+    background-color: #7395AE; /*557A95*/
+    color: #FFF;
 }
 /** End of options-container */
 
 /** Phrase-container */
-.phrase {
-    margin: 0;
-    font-family: 'Montserrat', monospace;
-    font-size: 1.1em;
-}
-
 .phrase-container {
-    background: #9DE0AD;
-    color: #555;
     grid-area: phrase;
     width: 100%;
 }
-/** End of Phrase-container */
 
+.phrase {
+    background: #7395AE;
+    color: #FFF;
+    margin: 0;
+    font-family: 'Montserrat', monospace;
+    font-size: 1.2em;
+}
+
+/** Gallows */
 .gallows-container {
     background: #FFF;
     grid-area: gallows;
     width: 100%;
 }
 
-/** Container that contains the keyboard */
+.gallows-container .container{
+    background: #FFF;
+    color: #557A95;
+}
+
+.placeholder {
+    font-size: 1.5em;
+}
+
+/** Keyboard */
 .keyboard-container {
     background: #FFF;
     grid-area: input;
@@ -112,7 +127,7 @@ button:hover {
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     grid-template-areas: inherit;
     justify-items: center;
-    height: 100%;
+    height: auto;
 }
 
 .checkbox-container {
@@ -123,25 +138,24 @@ button:hover {
     grid-area: inherit;
     cursor: pointer;
     border: none;
-    background-color: #45ADA8; /*Color Name: Biking Red*/
-    color: #FFF;
     outline: none;
-    border-radius: 1em;
     font-size: 1.1em;
     text-align: center;
     padding: 0;
-    width: 80%;
+    width: 100%;
     margin: 0;
 }
 /** End of keyboard-container*/
 
 .footer {
-    background: #9DE0AD;
+    grid-area: footer;
+    background: #5CDB95;
+    border-top: 3px;
 }
 
 .footer-container {
-    background: #9DE0AD;
     grid-area: footer;
     width: 100%;
     font-size: 0.8em;
+    color: #05386B;
 }
