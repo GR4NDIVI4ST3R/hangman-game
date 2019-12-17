@@ -3,6 +3,7 @@ var phrase = resetMessage;
 var input = "__INVALID__"; // Used for when nothing is inside input box
 var solution = "__INVALID__"; // Default when nothing is inside input box
 var bodyParts = 0;
+var bodyPartsLimit = 8;
 var phraseList = [];
 var posList = [];
 var resetMessage = "DON'T LET THE GUESSER SEE IT!";
@@ -94,7 +95,7 @@ function submit() {
             else {
                 alert("Invalid Phrase; Please use the following: a-z, A-Z, \" ? \", \" ! \", \" \' \" or \" . \"");
                 reset();
-                break;
+                return; // Exit submit() function
             }
         }
 
@@ -146,7 +147,7 @@ function guess(id) {
             }
         }
         //* Incorrect guess
-        else if (bodyParts < 9) {
+        else if (bodyParts < bodyPartsLimit) {
             bodyParts++;
             document.getElementById("placeholder").innerHTML = bodyParts;
             document.getElementById("winLoseMessage").classList.remove("hide");
@@ -166,7 +167,7 @@ function guess(id) {
         }
 
         //* Lose condition
-        if (bodyParts >= 9) {
+        if (bodyParts >= bodyPartsLimit) {
             document.getElementById("winLoseMessage").innerHTML = loseMessage;
             document.getElementById("phrase").innerHTML = input;
             document.getElementById("winLoseMessage").classList.remove("hide");

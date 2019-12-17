@@ -27,7 +27,7 @@ body {
     font-family: 'Montserrat', monospace;
     display: grid;
     grid-template-columns: 5fr 7fr;
-    grid-template-rows: auto auto 58.3vw auto; /*Auto makes row size = size of container*/
+    grid-template-rows: auto auto auto auto; /*Auto makes row size = size of container*/
     grid-template-areas:
         "options options"
         "phrase phrase"
@@ -101,6 +101,10 @@ body {
     width: 100%;
 }
 
+.gallows-container .container {
+    grid-template-rows: 7fr 1fr;
+}
+
 .gallows-container .container{
     background: #FFF;
     color: #557A95;
@@ -114,9 +118,9 @@ body {
 .keyboard-container {
     background: #FFF;
     grid-area: input;
-    width: 100%;
     font-size: 2em;
-    height: 58.3vw;
+    width: 100%;
+    height: 58.9vw;
 }
 
 .keyboard-container .container {
@@ -127,15 +131,14 @@ body {
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     grid-template-areas: inherit;
     justify-items: center;
-    height: auto;
 }
 
 .checkbox-container {
+    grid-area: inherit;
     width: 100%;
 }
 
 .checkbox {
-    grid-area: inherit;
     cursor: pointer;
     border: none;
     outline: none;
